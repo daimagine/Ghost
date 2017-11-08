@@ -1051,6 +1051,7 @@ describe('Post Model', function () {
 
                     // testing for nulls
                     (createdPost.get('feature_image') === null).should.equal(true);
+                    (createdPost.get('feature_image_caption') === null).should.equal(true);
                     (createdPost.get('meta_title') === null).should.equal(true);
                     (createdPost.get('meta_description') === null).should.equal(true);
 
@@ -1394,6 +1395,18 @@ describe('Post Model', function () {
                     // Should not have a conflicted slug from the first
                     foundPost.get('slug').should.not.equal(firstPost.slug);
 
+                    done();
+                }).catch(done);
+            });
+
+            it('can add, with feature image caption', function (done) {
+                var newPost = testUtils.DataGenerator.forModel.posts[2];
+
+                newPost.feature_image_caption = 'lorem ipsum';
+
+                PostModel.add(newPost, context).then(function (createdPost) {
+                    should.exist(createdPost);
+                    createdPost.get('feature_image_caption').should.equal(newPost.feature_image_caption);
                     done();
                 }).catch(done);
             });
