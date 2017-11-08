@@ -33,7 +33,7 @@ module.exports = {
         twitter_title: {type: 'string', maxlength: 300, nullable: true},
         twitter_description: {type: 'string', maxlength: 500, nullable: true},
         custom_template: {type: 'string', maxlength: 100, nullable: true},
-        feature_image_caption: {type: 'string', maxlength: 300, nullable: true}
+        feature_image_caption: {type: 'string', maxlength: 100, nullable: true}
     },
     users: {
         id: {type: 'string', maxlength: 24, nullable: false, primary: true},
